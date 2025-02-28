@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Akun PUBG Mobile - TUJUENWE</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #000000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Updated Header Styles */
+        header {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #9945FF, #14F195);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+        
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Adjust detail container margin to account for fixed header */
+        .detail-container {
+            margin-top: 100px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-gallery {
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 16px;
+            padding: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+
+        .account-info {
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .account-title {
+            font-size: 2rem;
+            color: #14F195;
+            margin-bottom: 1rem;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: #9945FF;
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+
+        .detail-list {
+            margin: 2rem 0;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(153, 69, 255, 0.2);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #888;
+        }
+
+        .detail-value {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-buy {
+            background: linear-gradient(45deg, #9945FF, #14F195);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            text-decoration: none; /* Add this to remove underline */
+            display: inline-block; /* Add this for proper button appearance */
+        }
+
+        .btn-chat {
+            flex: 1;
+            background: transparent;
+            border: 1px solid #14F195;
+            color: #14F195;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-buy:hover {
+            opacity: 0.9;
+        }
+
+        .btn-chat:hover {
+            background: rgba(20, 241, 149, 0.1);
+        }
+
+        .description {
+            margin-top: 2rem;
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .description h2 {
+            color: #14F195;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #14F195;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #9945FF;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Add gradient animation container */
+        .gradient-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body>
+    <!-- Updated Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">TUJUENWE</div>
+                <nav class="nav-links">
+                    <a href="index.html">Beranda</a>
+                    <a href="jual-akun.html">Jual Akun</a>
+                    <a href="beli-akun.html">Beli Akun</a>
+                    <a href="kategori-game.html">Kategori Game</a>
+                    <a href="masuk.html">Masuk</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="gradient-background" id="gradient"></div>
+
+    <div class="detail-container">
+        <div class="container">
+            <div class="detail-grid">
+                <div class="image-gallery">
+                    <img src="pubg-account-main.jpg" alt="PUBG Mobile Account" class="main-image">
+                    <div class="thumbnail-grid">
+                        <img src="pubg-thumbnail1.jpg" alt="Thumbnail 1" class="thumbnail">
+                        <img src="ml-thumbnail2.jpg" alt="Thumbnail 2" class="thumbnail">
+                        <img src="ml-thumbnail3.jpg" alt="Thumbnail 3" class="thumbnail">
+                        <img src="ml-thumbnail4.jpg" alt="Thumbnail 4" class="thumbnail">
+                    </div>
+                </div>
+
+                <div class="account-info">
+                    <h1 class="account-title">Akun PUBG Mobile</h1>
+                    <div class="price-tag">Rp -</div>
+                    
+                    <div class="detail-list">
+                        <div class="detail-item">
+                            <span class="detail-label">Level Akun</span>
+                            <span class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jumlah Hero</span>
+                            <span class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jumlah Skin</span>
+                            <span class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Level Emblem</span>
+                            <span class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Rank Tertinggi</span>
+                            <span class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Win Rate</span>
+                            <span class="detail-value">-</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="payment.html" class="btn-buy">--Payment--</a>
+                        <button class="btn-chat">Chat</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description">
+                <h2>Deskripsi Akun</h2>
+                <p>Akun PUBG Mobile dengan spesifikasi tinggi dan koleksi lengkap. Dilengkapi dengan:</p>
+                <ul>
+                    <li>-</li>
+                    <li>-</li>
+                    <li>-</li>
+                    <li>-</li>
+                    <li>-</li>
+                    <li>-</li>
+                    <li>-</li>
+                </ul>
+                <p>Akun ini sangat cocok untuk player yang ingin memiliki akun dengan koleksi lengkap dan prestasi tinggi.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple image gallery functionality
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.querySelector('.main-image');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const newSrc = thumbnail.src;
+                const oldSrc = mainImage.src;
+                mainImage.src = newSrc;
+                thumbnail.src = oldSrc;
+            });
+        });
+
+        // Gradient Animation
+        const gradient = document.getElementById('gradient');
+        let currentAngle = 0;
+
+        // Solana-inspired colors
+        const colors = [
+            '#9945FF', // Purple
+            '#14F195', // Green
+            '#00C2FF', // Blue
+            '#FF9C00'  // Orange
+        ];
+
+        function updateGradient() {
+            const color1 = colors[Math.floor(currentAngle / 90) % colors.length];
+            const color2 = colors[(Math.floor(currentAngle / 90) + 1) % colors.length];
+            const color3 = colors[(Math.floor(currentAngle / 90) + 2) % colors.length];
+
+            gradient.style.background = `
+                radial-gradient(circle at ${30 + Math.sin(currentAngle * Math.PI / 180) * 20}% ${50 + Math.cos(currentAngle * Math.PI / 180) * 20}%, 
+                    ${color1} 0%, 
+                    transparent 50%),
+                radial-gradient(circle at ${70 + Math.cos(currentAngle * Math.PI / 180) * 20}% ${30 + Math.sin(currentAngle * Math.PI / 180) * 20}%, 
+                    ${color2} 0%, 
+                    transparent 50%),
+                radial-gradient(circle at ${50 + Math.sin(currentAngle * Math.PI / 180) * 20}% ${70 + Math.cos(currentAngle * Math.PI / 180) * 20}%, 
+                    ${color3} 0%, 
+                    transparent 50%)
+            `;
+
+            currentAngle = (currentAngle + 0.1) % 360;
+            requestAnimationFrame(updateGradient);
+        }
+
+        // Start the animation
+        updateGradient();
+    </script>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tentang TUJUENWE</h3>
+                    <ul>
+                        <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                        <li><a href="cara-kerja.html">Cara Kerja</a></li>
+                        <li><a href="keamanan.html">Keamanan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Bantuan</h3>
+                    <ul>
+                        <li><a href="cara-beli.html">Cara Beli</a></li>
+                        <li><a href="cara-jual.html">Cara Jual</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Hubungi Kami</h3>
+                    <ul>
+                        <li><a href="discord.html">Discord</a></li>
+                        <li><a href="whatsapp.html">WhatsApp</a></li>
+                        <li><a href="telegram.html">Telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TUJUENWE - Platform Jual Beli Akun Game Terpercaya</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
